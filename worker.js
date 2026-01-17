@@ -42,9 +42,8 @@ export default {
       url.pathname === '/index.html' ||
       url.pathname === '/github.html'
     ) {
-      return env.ASSETS.fetch(
-        new Request(new URL('/github.html', url), request)
-      )
+      const newUrl = new URL('/github.html', url);
+      return env.ASSETS.fetch(new Request(newUrl, request));
     }
 
 
@@ -196,3 +195,4 @@ async function proxy(urlObj, reqInit) {
     headers
   })
 }
+
