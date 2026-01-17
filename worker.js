@@ -42,7 +42,7 @@ export default {
       url.pathname === '/index.html' ||
       url.pathname === '/github.html'
     ) {
-     return env.ASSETS.fetch(new URL('/github.html', request.url));
+     return Response.redirect(new URL('/github.html', request.url).toString(), 302)
     }
 
 
@@ -194,5 +194,6 @@ async function proxy(urlObj, reqInit) {
     headers
   })
 }
+
 
 
