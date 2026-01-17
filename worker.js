@@ -34,6 +34,9 @@ const PREFLIGHT_INIT = {
 
 export default {
   async fetch(request, env) {
+    if (!env || !env.ASSETS) {
+      return new Response('ASSETS NOT FOUND', { status: 500 })
+    }
     const url = new URL(request.url)
 
     /** 首页 & 静态文件（不走限流） */
@@ -196,6 +199,7 @@ async function proxy(urlObj, reqInit) {
     headers
   })
 }
+
 
 
 
